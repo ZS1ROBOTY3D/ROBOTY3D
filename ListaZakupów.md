@@ -1,5 +1,6 @@
 # Lista Zakupów
-## Zrobiona przez Franciszka Moszko
+Zrobiona przez Franciszka Moszko
+## Moduły Wymagane
 - [płyta Arduino UNO]()
 - [L298n 2 razy minimum]()
 - [płytka stykowa (30-sto wierszowa)]()
