@@ -1,3 +1,7 @@
 [submodule "Karol.S-Roboty3D"]
 	path = Karol.S-Roboty3D
 	url = https://github.com/Gracz2356/Karol.S-Roboty3D.git
+[submodule "Jakub-Roboty3D"]
+	path = Jakub-Roboty3D
+	url = https://github.com/HEJOK254/Jakub-Roboty3D.git
+	branch = main
