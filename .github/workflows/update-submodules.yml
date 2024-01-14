@@ -12,6 +12,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Log into GitHub
+        run: |
+          gh auth login --with-token ${{ secrets.auth_token }}
+
       - name: Initialize and update submodules
         run: |
           git submodule update --init --recursive
