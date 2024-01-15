@@ -18,10 +18,27 @@ jobs:
           git config user.email "${{ secrets.EMAIL }}"
           git config user.name "ZS1ROBOTY3D"
 
+      - name: Check for changes
+        id: check_changes
+        run: |
+          changes=$(git status --porcelain)
+          if [[ -n "$changes" ]]; then
+            echo "Changes found, submodule update will run."
+            echo "::set-output name=should_run::true"
+          else
+            echo "No changes found, submodule update will be skipped."
+            echo "::set-output name=should_run::false"
+          fi
+
       - name: Initialize and update submodules
         run: |
-          git submodule update --init --recursive
-          git submodule foreach git pull origin main  # Update each submodule to its latest commit
-          git add .
-          git commit -m "Update submodules"
-          git push origin main
+          # Skip this part if Check for changes didn't find any changes
+          if [[ "${{ steps.check_changes.outputs.should_run }}" == 'true' ]]; then
+            git submodule update --init --recursive
+            git submodule foreach git pull origin main
+            git add .
+            git commit -m "Update submodules"
+            git push origin main
+          else
+            echo "Skipping submodule update as no changes were found."
+          fi
