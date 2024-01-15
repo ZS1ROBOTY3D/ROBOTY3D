@@ -18,16 +18,10 @@ jobs:
           git config user.email "${{ secrets.EMAIL }}"
           git config user.name "ZS1ROBOTY3D"
 
-      - name: Check for changes
-        id: check_changes
-        run: |
-          git submodule foreach git diff --exit-code || { echo "Submodule changes found."; echo "found_changes=true" > $GITHUB_OUTPUT; }
-
       - name: Initialize and update submodules
-        if: success() && steps.check_changes.outputs.found_changes == 'true'
         run: |
           git submodule update --init --recursive
-          git submodule foreach git pull origin main
+          git submodule foreach git pull origin main  # Update each submodule to its latest commit
           git add .
-          git commit -m "Update submodules"
+          git commit -m "Update submodules" || echo "No changes found"
           git push origin main
