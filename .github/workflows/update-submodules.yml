@@ -26,7 +26,7 @@ jobs:
             echo "Changes found."
             echo "{found_changes}={true}" >> $GITHUB_OUTPUT
           else
-            echo "No changes found, submodule update will be skipped."
+            echo "No changes found."
             echo "{found_changes}={false}" >> $GITHUB_OUTPUT
           fi
 
