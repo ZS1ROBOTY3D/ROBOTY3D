@@ -21,23 +21,16 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          changes=$(git submodule foreach 'git status --porcelain')
-          if [[ -n "$changes" ]]; then
-            echo "Submodule changes found."
-            echo "found_changes=true" >> $GITHUB_OUTPUT
-          else
-            echo "No changes found."
-            echo "found_changes=false" >> $GITHUB_OUTPUT
-          fi
+          git submodule foreach git diff --exit-code || { echo "Submodule changes found."; echo "found_changes=true" > ${GITHUB_WORKSPACE}/output.txt; }
 
       - name: Initialize and update submodules
+        if: success() && steps.check_changes.outputs.found_changes == 'true'
         run: |
-          if [[ "${{ steps.check_changes.outputs.found_changes }}" == 'true' ]]; then
-            git submodule update --init --recursive
-            git submodule foreach git pull origin main
-            git add .
-            git commit -m "Update submodules"
-            git push origin main
-          else
-            echo "Skipping submodule update as no changes were found."
-          fi
+          git submodule update --init --recursive
+          git submodule foreach git pull origin main
+          git add .
+          git commit -m "Update submodules"
+          git push origin main
+        else
+          echo "Skipping submodule update as no changes were found."
+        fi
