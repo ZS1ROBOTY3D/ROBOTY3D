@@ -15,7 +15,7 @@ jobs:
 
       - name: Log Into GitHub
         run:
-          gh auth login --with-token <<< "${{ secrets.ACCESS_TOKEN }}"
+          echo "${{ secrets.ACCESS_TOKEN }}" | gh auth login --with-token
 
       - name: Initialize and update submodules
         run: |
