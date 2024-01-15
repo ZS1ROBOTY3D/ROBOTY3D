@@ -21,7 +21,7 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          changes=$(git diff --submodule=diff --quiet || echo "changes")
+          changes=$(git submodule foreach 'git status --porcelain')
           if [[ -n "$changes" ]]; then
             echo "Submodule changes found."
             echo "found_changes=true" >> $GITHUB_OUTPUT
