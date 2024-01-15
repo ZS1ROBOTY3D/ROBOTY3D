@@ -6,7 +6,7 @@ on:
     - cron: "0 0 * * *"
 
 env:
-  GH_TOKEN: ${{ secrets.auth_token }}
+  GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
 jobs:
   update:
