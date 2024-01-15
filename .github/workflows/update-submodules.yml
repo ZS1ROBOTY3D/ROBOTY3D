@@ -32,7 +32,7 @@ jobs:
 
       - name: Initialize and update submodules
         run: |
-          if [[ "${{ steps.check_changes.outputs.should_run }}" == 'true' ]]; then
+          if [[ "${{ steps.check_changes.outputs.found_changes }}" == 'true' ]]; then
             git submodule update --init --recursive
             git submodule foreach git pull origin main
             git add .
