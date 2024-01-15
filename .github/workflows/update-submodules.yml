@@ -13,10 +13,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Log Into GitHub
-        run:
-          echo "${{ secrets.ACCESS_TOKEN }}" | gh auth login --with-token
-
       - name: Initialize and update submodules
         run: |
           git submodule update --init --recursive
@@ -24,3 +20,5 @@ jobs:
           git add .
           git commit -m "Update submodules"
           git push origin main
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
