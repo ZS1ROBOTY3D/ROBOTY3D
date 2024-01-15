@@ -32,7 +32,6 @@ jobs:
 
       - name: Initialize and update submodules
         run: |
-          # Skip this part if Check for changes didn't find any changes
           if [[ "${{ steps.check_changes.outputs.should_run }}" == 'true' ]]; then
             git submodule update --init --recursive
             git submodule foreach git pull origin main
