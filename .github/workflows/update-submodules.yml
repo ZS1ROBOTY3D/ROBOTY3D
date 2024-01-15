@@ -21,7 +21,7 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          git submodule foreach git diff --exit-code || { echo "Submodule changes found."; echo "found_changes=true" > ${GITHUB_WORKSPACE}/output.txt; }
+          git submodule foreach git diff --exit-code || { echo "Submodule changes found."; echo "found_changes=true" > $; }
 
       - name: Initialize and update submodules
         if: success() && steps.check_changes.outputs.found_changes == 'true'
@@ -31,6 +31,3 @@ jobs:
           git add .
           git commit -m "Update submodules"
           git push origin main
-        else
-          echo "Skipping submodule update as no changes were found."
-        fi
