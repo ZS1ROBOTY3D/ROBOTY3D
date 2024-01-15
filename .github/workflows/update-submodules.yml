@@ -24,10 +24,10 @@ jobs:
           changes=$(git status --porcelain)
           if [[ -n "$changes" ]]; then
             echo "Changes found."
-            echo "found_changes=true" >> $GITHUB_ENV
+            echo "found_changes=true" >> $GITHUB_OUT
           else
             echo "No changes found."
-            echo "found_changes=false" >> $GITHUB_ENV
+            echo "found_changes=false" >> $GITHUB_OUT
           fi
 
       - name: Initialize and update submodules
