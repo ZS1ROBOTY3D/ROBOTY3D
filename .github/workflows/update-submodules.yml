@@ -15,12 +15,10 @@ jobs:
 
       - name: Log Into GitHub
         run: |
-          git config user.email ${{ secrets.EMAIL }}
+          git config user.email "roboty3d.zs1@gmail.com"
           git config user.name "ZS1ROBOTY3D"
 
       - name: Initialize and update submodules
-        env:
-          GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         run: |
           git submodule update --init --recursive
           git submodule foreach git pull origin main  # Update each submodule to its latest commit
