@@ -13,6 +13,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Log Into GitHub
+        run: |
+          git config user.email ${{ secrets.EMAIL }}
+          git config user.name "ZS1ROBOTY3D"
+
       - name: Initialize and update submodules
         env:
           GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
