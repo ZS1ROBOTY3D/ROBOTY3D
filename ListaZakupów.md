@@ -22,7 +22,6 @@ Zrobiona przez Franciszka Moszko
 - [tranzystor MOSFET IRF520]()
 - [kabelki połączeniowe]()
 - [złączka do baterii 9V](https://allegro.pl/oferta/zatrzask-klips-baterii-9v-6f22-kpl-10szt-1293-7140164601)
-- [kabelki połączeniowe]()
 - [listwa goldpin]()
 - [spienione PCV 20 x 20 cm]()
 ## Moduły dodatkowe
