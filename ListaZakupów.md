@@ -2,7 +2,7 @@
 Zrobiona przez Franciszka Moszko
 ## Moduły Wymagane
 - [płyta Arduino UNO]()
-- [L298n 2 razy minimum]()
+- [L298n (2 razy minimum)]()
 - [płytka stykowa (30-sto wierszowa)]()
 - [diody LED czerwone 6 sztuk]()
 - [diody LED zielone 4 sztuki]()
